@@ -1,3 +1,4 @@
+const { editStockGet } = require("../controllers/indexController");
 const pool = require("./pool");
 
 async function getAllStock() {
@@ -29,6 +30,15 @@ async function getSelectedStock(category, param) {
     );
     console.log(rows);
     return rows;
+}
+
+async function editSelectedStock(productId, productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory) {
+    await pool.query(
+        `UPDATE stock
+        SET title = $1, description = $2, price = $3, quantity = $4, brand = #5, category = $6 FROM stock WHERE $1 = $2
+        WHERE id = $7`,
+        [productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory, productId]
+    );
 }
 
 module.exports = {

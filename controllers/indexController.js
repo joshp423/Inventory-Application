@@ -59,7 +59,7 @@ export const createStockPost = [
 ]
 
 export async function editStockGet (req, res) {
-  const stock = await db.
+  const stock = await db.getSelectedStock("id", req.params.stockid)
   res.render("editStockForm", {title: "Edit Stock", links, stock});
 };
 
@@ -77,7 +77,7 @@ export const editStockPost = [
     }
     const {productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory} = matchedData(req);
 
-    await db.addNewStock(productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory);
+    await db.edit(productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory);
     res.redirect('/');
   }
 ]
