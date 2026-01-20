@@ -1,2 +1,21 @@
-<h1> <%= item.title %> </h1>
-<
+<div class="itemTitlePrice">
+    <h1> <%= item.title %> </h1>
+    <h2> <%= item.price %> </h2>
+</div>
+<div class="itemInfo">
+    <h3> <%= item.category %> </h3>
+    <h3> <%= item.brand %> </h3>
+    <p> <%= item.Description %> </p>
+    <p> <%= item.quantity %> </p>
+</div>
+<div class="itemButtons">
+    <a href=":stockid/stockEditForm">
+        <button type="button">Edit Item</button>
+    </a>
+    <a href=":stockid/delete">
+        <button type="button">Delete Item</button>
+    </a>
+    <a href="/">
+        <button type="button">Back to stock view</button>
+    </a>
+</div>
