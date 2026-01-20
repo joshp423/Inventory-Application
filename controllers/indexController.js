@@ -18,6 +18,7 @@ export async function createStockGet (req, res) {
 
 const { body, validationResult, matchedData } = require("express-validator");
 const lengthErrTitle = "must be between 1 and 200 characters.";
+const lengthErrDesc = "must be between 1 and 500 characters.";
 const numErrPrice = "must be above $1.";
 const typeErrPrice = "must be currency";
 const numErrQuantity = "must be between 1 and 2000 units.";
@@ -27,6 +28,9 @@ const lengthErrBrand = "must be between 1 and 25 characters.";
 const validateProduct = [
   body("productTitle").trim().escape()
     .isLength({min: 1, max: 200}).withMessage(`Product title ${lengthErrTitle}`),
+  body("productDesc").trim().escape()
+    .isLength({min: 1, max: 500}).withMessage(`Product description: ${lengthErrDesc}`)
+    .isAlphanumeric().withMessage(`Product description: ${isAlphaBrand}`),
   body("productPrice").escape()
     .isCurrency({allow_negatives: 'false'}).withMessage(typeErrPrice)
     .isNumeric().isInt({min: 1}).withMessage(numErrPrice),
@@ -67,6 +71,7 @@ export const editStockPost = [
       return res.status(400).render("createStockForm", {
         title: "Create new message",
         links,
+        stock,
         errors: errors.array(),
       })
     }
