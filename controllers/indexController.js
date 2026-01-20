@@ -77,7 +77,7 @@ export const editStockPost = [
     }
     const {productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory} = matchedData(req);
 
-    await db.edit(productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory);
+    await db.editSelectedStock(productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory);
     res.redirect('/');
   }
 ]

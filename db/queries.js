@@ -45,5 +45,6 @@ module.exports = {
     getAllStock,
     getAllCategories,
     addNewStock,
-    getSelectedStock
+    getSelectedStock,
+    editSelectedStock
 }
