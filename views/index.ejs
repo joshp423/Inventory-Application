@@ -6,9 +6,9 @@
     <body>
         <%- include('navbar', {links: links}) %>
         <div class="stockSection">
-            <!-- <% stock.forEach((item) => { %> -->
-                <!-- <%- include('messages/message', {message: message}); %> -->
-            <!-- <% }); %> --> 
+            <% stock.forEach((item) => { %> 
+                <%- include('stockPages/stockPage', {item}); %>
+            <% }); %> 
         </div>
     </body>
 </html>
