@@ -75,9 +75,9 @@ export const editStockPost = [
         errors: errors.array(),
       })
     }
-    const {productTitle, productPrice, productQuantity, productBrand, productCategory} = matchedData(req);
+    const {productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory} = matchedData(req);
 
-    await db.addNewStock(productTitle, productPrice, productQuantity, productBrand, productCategory);
+    await db.addNewStock(productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory);
     res.redirect('/');
   }
 ]

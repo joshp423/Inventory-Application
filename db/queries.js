@@ -12,11 +12,11 @@ async function getAllCategories() {
     return rows;
 }
 
-async function addNewStock(productTitle, productPrice, productQuantity, productBrand, productCategory) {
+async function addNewStock(productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory) {
     const {rows} = await pool.query(
-        `INSERT INTO stock (title, price, quantity, brand, category) VALUES 
-        ($1, $2, $3, $4, $5)`,
-        [productTitle, productPrice, productQuantity, productBrand, productCategory]
+        `INSERT INTO stock (title, description, price, quantity, brand, category) VALUES 
+        ($1, $2, $3, $4, $5, $6)`,
+        [productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory]
     );
     console.log(rows);
     return rows;
