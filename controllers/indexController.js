@@ -2,8 +2,8 @@ require('dotenv').config();
 const db = require("../db/queries");
 
 const links = [
-  { href: "/", text: "Home" },
-  { href: "/new", text: "New Message" },
+  { href: "/", text: "Stock View" },
+  { href: "/stockCategories", text: "Category View" },
 ];
 
 async function allStockGet (req, res) {
@@ -58,9 +58,10 @@ const createStockPost = [
 ]
 
 async function editStockGet (req, res) {
-  const productid = req.params.stockid
-  const stock = await db.getSelectedStockId(productid)
-  res.render("stockPages/stockEditForm", {title: "Edit Stock", links, stock:stock[0]});
+  const productid = req.params.stockid;
+  const stock = await db.getSelectedStockId(productid);
+  const categories = await db.getAllCategories();
+  res.render("stockPages/stockEditForm", {title: "Edit Stock", links, stock:stock[0], categories});
 };
 
 const editStockPost = [
@@ -68,11 +69,13 @@ const editStockPost = [
   async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
-      const stock = await db.getSelectedStockId(req.params.stockid)
+      const stock = await db.getSelectedStockId(req.params.stockid);
+      const cats = await db.getAllCategories();
       return res.status(400).render("stockPages/stockEditForm", {
         title: "Create new message",
         links,
         stock:stock[0],
+        categories,
         errors: errors.array(),
       })
     }

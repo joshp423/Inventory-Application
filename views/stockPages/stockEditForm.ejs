@@ -13,14 +13,13 @@
                 <input type="text" name="productTitle" value= "<%= stock.title %>" >
                 <label for="productDesc">Product Description</label>
                 <textarea name="productDesc" id="productDesc"><%= stock.description %></textarea>
-                <!-- <label for="productCategory">Product Category</label>
-                <select name="productCategory" id="productCategory" value= <%= stock.category %> > -->
-                    <!-- <option value="Electric Guitar">Electric Guitar</option>
-                    <option value="Acoustic Guitar">Acoustic Guitar</option>
-                    <option value="Bass Guitar">Bass Guitar</option>
-                    <option value="Drums">Drums</option>
-                    <option value="Pianos and Keyboards">Pianos and Keyboards</option> -->
-                <!-- </select> -->
+
+                <label for="productCategory">Product Category</label>
+                <select name="productCategory" id="productCategory" value="<%= stock.category %>">
+                <% categories.forEach((category) => { %> 
+                    <%- include('../categoryPages/categoryOptions', {category}); %>
+                <% }); %> 
+                </select>
                 <label for="productPrice">Product Price</label>
                 <input type="number" name="productPrice" value= "<%= stock.price %>">
                 <label for="productQuantity">Product Quantity</label>

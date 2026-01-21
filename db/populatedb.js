@@ -34,6 +34,13 @@ VALUES
     2499, 150, 'Fender', 'Bass Guitars'),
     ('USA classic maple 4pc Drumkit 12X8MT 14X14FT 18X14BD 14X5SD', '7-ply Cross-Laminated North American Maple.', 
     6999, 30, 'Ludwig', 'Drums')
+
+INSERT INTO categories (category)
+  VALUES
+  ('Electric Guitars'),
+  ('Acoustic Guitars'),
+  ('Bass Guitars'),
+  ('Drums')
 `;
 
 async function main() {

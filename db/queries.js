@@ -1,4 +1,3 @@
-const { editStockGet } = require("../controllers/indexController");
 const pool = require("./pool");
 
 async function getAllStock() {
@@ -23,15 +22,27 @@ async function addNewStock(productTitle, productDesc, productPrice, productQuant
     return rows;
 }
 
-async function getSelectedStockId(param) {
-    console.log(param)
+async function getSelectedStockId(id) {
+    console.log(id)
     const {rows} = await pool.query(
         `SELECT * FROM stock WHERE id = $1`,
-        [param]
+        [id]
     );
     console.log(rows);
     return rows;
 }
+
+async function getSelectedStockCat(cat) {
+    console.log(id)
+        const {rows} = await pool.query(
+            `SELECT * FROM stock WHERE id = $1`,
+            [id]
+        );
+    console.log(rows);
+    return rows;
+}
+
+
 
 async function editSelectedStock(productId, productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory) {
     console.log(productId, productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory)
