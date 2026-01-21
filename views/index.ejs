@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-        <%- include('navbar', {links: links}) %>
+        <%- include('partials/navbar', {links}) %>
         <div class="stockSection">
             <% stock.forEach((item) => { %> 
                 <%- include('stockPages/stockPage', {item}); %>

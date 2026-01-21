@@ -6,6 +6,8 @@
     <body>
         <%- include('navbar', {links: links}) %>
         <div class="stockForm">
+            <%- include("partials/errors.ejs") %>
+            <h1>Create Stock Entry</h1>
             <form action="POST">
                 <label for="productTitle">Product Title</label>
                 <input type="text" name="productTitle">

@@ -6,12 +6,12 @@ const links = [
   { href: "/new", text: "New Message" },
 ];
 
-export async function allStockGet (req, res) {
+async function allStockGet (req, res) {
   const stock = await db.getAllStock();
   res.render("index", {title: "Musical Instrument Inventory Application", stock, links})
 }
 
-export async function createStockGet (req, res) {
+async function createStockGet (req, res) {
   const categories = await db.getAllCategories();
   res.render("createStockForm", {title: "New Stock Entry", links, categories});
 };
@@ -29,8 +29,7 @@ const validateProduct = [
   body("productTitle").trim().escape()
     .isLength({min: 1, max: 200}).withMessage(`Product title ${lengthErrTitle}`),
   body("productDesc").trim().escape()
-    .isLength({min: 1, max: 500}).withMessage(`Product description: ${lengthErrDesc}`)
-    .isAlphanumeric().withMessage(`Product description: ${isAlphaBrand}`),
+    .isLength({min: 1, max: 500}).withMessage(`Product description: ${lengthErrDesc}`),
   body("productPrice").escape()
     .isCurrency({allow_negatives: 'false'}).withMessage(typeErrPrice)
     .isNumeric().isInt({min: 1}).withMessage(numErrPrice),
@@ -40,7 +39,7 @@ const validateProduct = [
     .isLength({min:1, max: 25}).withMessage(`Product brand ${lengthErrBrand}`)
 ]
 
-export const createStockPost = [
+const createStockPost = [
   ...validateProduct,
   async (req, res) => {
     const errors = validationResult(req);
@@ -58,30 +57,37 @@ export const createStockPost = [
   }
 ]
 
-export async function editStockGet (req, res) {
-  const stock = await db.getSelectedStock("id", req.params.stockid)
-  res.render("editStockForm", {title: "Edit Stock", links, stock});
+async function editStockGet (req, res) {
+  const productid = req.params.stockid
+  const stock = await db.getSelectedStockId(productid)
+  res.render("stockPages/stockEditForm", {title: "Edit Stock", links, stock:stock[0]});
 };
 
-export const editStockPost = [
+const editStockPost = [
   ...validateProduct,
   async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
-      return res.status(400).render("createStockForm", {
+      const stock = await db.getSelectedStockId(req.params.stockid)
+      return res.status(400).render("stockPages/stockEditForm", {
         title: "Create new message",
         links,
-        stock,
+        stock:stock[0],
         errors: errors.array(),
       })
     }
     const {productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory} = matchedData(req);
 
-    await db.editSelectedStock(productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory);
+    await db.editSelectedStock(req.params.stockid, productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory);
     res.redirect('/');
   }
 ]
 
-
-
+module.exports = {
+  allStockGet,
+  createStockGet,
+  createStockPost,
+  editStockGet,
+  editStockPost
+};
 

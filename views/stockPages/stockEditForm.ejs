@@ -4,28 +4,30 @@
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-        <%- include('navbar', {links: links}) %>
+        <%- include('../partials/navbar.ejs', {links}) %>
         <div class="stockForm">
-            <form action="POST">
+            <h1>Edit Stock Entry</h1>
+            <%- include("../partials/errors") %>
+            <form method="POST" action="/stockEditForm/<%= stock.id %>" id="editStockForm">
                 <label for="productTitle">Product Title</label>
-                <input type="text" name="productTitle" value= <%= stock.title %> >
+                <input type="text" name="productTitle" value= "<%= stock.title %>" >
                 <label for="productDesc">Product Description</label>
-                <textarea name="productDesc" id="productDesc"></textarea>
-                <label for="productCategory">Product Category</label>
-                <select name="productCategory" id="productCategory" value= <%= stock.category %> >
-                    <option value="Electric Guitar">Electric Guitar</option>
+                <textarea name="productDesc" id="productDesc"><%= stock.description %></textarea>
+                <!-- <label for="productCategory">Product Category</label>
+                <select name="productCategory" id="productCategory" value= <%= stock.category %> > -->
+                    <!-- <option value="Electric Guitar">Electric Guitar</option>
                     <option value="Acoustic Guitar">Acoustic Guitar</option>
                     <option value="Bass Guitar">Bass Guitar</option>
                     <option value="Drums">Drums</option>
-                    <option value="Pianos and Keyboards">Pianos and Keyboards</option>
-                </select>
+                    <option value="Pianos and Keyboards">Pianos and Keyboards</option> -->
+                <!-- </select> -->
                 <label for="productPrice">Product Price</label>
-                <input type="number" name="productPrice" value= "$" <%= stock.price %> >
+                <input type="number" name="productPrice" value= "<%= stock.price %>">
                 <label for="productQuantity">Product Quantity</label>
-                <input type="number" name="productQuantity" value= <%= stock.quantity %>>
+                <input type="number" name="productQuantity" value= "<%= stock.quantity %>">
                 <label for="productBrand">Product Brand</label>
-                <input type="text" name="productBrand" value= <%= stock.brand %>>
-                <button type="submit">Add Stock</button>
+                <input type="text" name="productBrand" value= "<%= stock.brand %>">
+                <button type="submit">Update Stock</button>
             </form>
         </div>
     </body>

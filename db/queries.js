@@ -23,28 +23,33 @@ async function addNewStock(productTitle, productDesc, productPrice, productQuant
     return rows;
 }
 
-async function getSelectedStock(category, param) {
+async function getSelectedStockId(param) {
+    console.log(param)
     const {rows} = await pool.query(
-        `SELECT * FROM stock WHERE $1 = $2`,
-        [category, param]
+        `SELECT * FROM stock WHERE id = $1`,
+        [param]
     );
     console.log(rows);
     return rows;
 }
 
 async function editSelectedStock(productId, productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory) {
-    await pool.query(
+    console.log(productId, productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory)
+    const {rows} = await pool.query(
         `UPDATE stock
-        SET title = $1, description = $2, price = $3, quantity = $4, brand = #5, category = $6 FROM stock WHERE $1 = $2
-        WHERE id = $7`,
+        SET title = $1, description = $2, price = $3, quantity = $4, brand = $5, category = $6
+        WHERE id = $7
+        RETURNING *`,
         [productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory, productId]
     );
+    console.log(rows)
+    return;
 }
 
 module.exports = {
     getAllStock,
     getAllCategories,
     addNewStock,
-    getSelectedStock,
+    getSelectedStockId,
     editSelectedStock
 }
