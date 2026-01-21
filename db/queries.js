@@ -42,8 +42,6 @@ async function getSelectedStockCat(cat) {
     return rows;
 }
 
-
-
 async function editSelectedStock(productId, productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory) {
     console.log(productId, productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory)
     const {rows} = await pool.query(

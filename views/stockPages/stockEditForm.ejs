@@ -15,11 +15,12 @@
                 <textarea name="productDesc" id="productDesc"><%= stock.description %></textarea>
 
                 <label for="productCategory">Product Category</label>
-                <select name="productCategory" id="productCategory" value="<%= stock.category %>">
+                <select name="productCategory" id="productCategory" selected="<%= stock.category %>">
                 <% categories.forEach((category) => { %> 
                     <%- include('../categoryPages/categoryOptions', {category}); %>
                 <% }); %> 
                 </select>
+
                 <label for="productPrice">Product Price</label>
                 <input type="number" name="productPrice" value= "<%= stock.price %>">
                 <label for="productQuantity">Product Quantity</label>

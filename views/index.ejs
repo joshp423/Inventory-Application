@@ -5,6 +5,11 @@
     </head>
     <body>
         <%- include('partials/navbar', {links}) %>
+        <div class="stockSectionTitle">
+            <h1>All Stock</h1>
+            <a href="/createStockForm"><button type="button">Create New Stock Item</button></a>
+        </div>
+        
         <div class="stockSection">
             <% stock.forEach((item) => { %> 
                 <%- include('stockPages/stockPage', {item}); %>

@@ -13,14 +13,13 @@ async function allStockGet (req, res) {
 
 async function createStockGet (req, res) {
   const categories = await db.getAllCategories();
-  res.render("createStockForm", {title: "New Stock Entry", links, categories});
+  res.render("stockPages/createStockForm", {title: "New Stock Entry", links, categories});
 };
 
 const { body, validationResult, matchedData } = require("express-validator");
 const lengthErrTitle = "must be between 1 and 200 characters.";
 const lengthErrDesc = "must be between 1 and 500 characters.";
 const numErrPrice = "must be above $1.";
-const typeErrPrice = "must be currency";
 const numErrQuantity = "must be between 1 and 2000 units.";
 const isAlphaBrand = "must contain letters.";
 const lengthErrBrand = "must be between 1 and 25 characters.";
@@ -31,10 +30,10 @@ const validateProduct = [
   body("productDesc").trim().escape()
     .isLength({min: 1, max: 500}).withMessage(`Product description: ${lengthErrDesc}`),
   body("productPrice").escape()
-    .isCurrency({allow_negatives: 'false'}).withMessage(typeErrPrice)
     .isNumeric().isInt({min: 1}).withMessage(numErrPrice),
   body("productQuantity").trim().escape()
     .isNumeric().isInt({min: 1, max: 2000}).withMessage(numErrQuantity),
+  body('productCategory').trim().escape(),
   body("productBrand").trim().escape().isAlpha().withMessage(`Product brand ${isAlphaBrand}`)
     .isLength({min:1, max: 25}).withMessage(`Product brand ${lengthErrBrand}`)
 ]
@@ -50,9 +49,10 @@ const createStockPost = [
         errors: errors.array(),
       })
     }
-    const {productTitle, productPrice, productQuantity, productBrand, productCategory} = matchedData(req);
+    const {productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory} = matchedData(req);
 
-    await db.addNewStock(productTitle, productPrice, productQuantity, productBrand, productCategory);
+    
+    await db.addNewStock(productTitle, productDesc, productPrice, productQuantity, productBrand, productCategory);
     res.redirect('/');
   }
 ]
@@ -70,7 +70,7 @@ const editStockPost = [
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
       const stock = await db.getSelectedStockId(req.params.stockid);
-      const cats = await db.getAllCategories();
+      const categories = await db.getAllCategories();
       return res.status(400).render("stockPages/stockEditForm", {
         title: "Create new message",
         links,

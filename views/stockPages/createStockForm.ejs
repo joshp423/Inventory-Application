@@ -4,26 +4,24 @@
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-        <%- include('navbar', {links: links}) %>
+        <%- include('../partials/navbar.ejs', {links}) %>
         <div class="stockForm">
-            <%- include("partials/errors.ejs") %>
             <h1>Create Stock Entry</h1>
-            <form action="POST">
+            <%- include("../partials/errors.ejs") %>
+            <form method="POST" action="/createStockForm" id="createStockForm">
                 <label for="productTitle">Product Title</label>
                 <input type="text" name="productTitle">
                 <label for="productDesc">Product Description</label>
-                <input type="text" name="productDesc">
+                <textarea name="productDesc" id="productDesc"></textarea>
+
                 <label for="productCategory">Product Category</label>
                 <select name="productCategory" id="productCategory">
-                    <% categories.forEach((category) => { %>
-                        <%- include('categoryPages/categoryOptions', {category}); %>
+                    <% categories.forEach((category) => { %> 
+                        <%- include('../categoryPages/categoryOptions', {category}); %>
                     <% }); %> 
-                    <!-- <option value="Electric Guitar">Electric Guitar</option>
-                    <option value="Acoustic Guitar">Acoustic Guitar</option>
-                    <option value="Bass Guitar">Bass Guitar</option>
-                    <option value="Drums">Drums</option>
-                    <option value="Pianos and Keyboards">Pianos and Keyboards</option> -->
+                
                 </select>
+
                 <label for="productPrice">Product Price</label>
                 <input type="number" name="productPrice">
                 <label for="productQuantity">Product Quantity</label>
