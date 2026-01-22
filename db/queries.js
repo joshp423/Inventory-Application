@@ -55,10 +55,21 @@ async function editSelectedStock(productId, productTitle, productDesc, productPr
     return;
 }
 
+async function deleteSelectedStock(id) {
+    console.log(id)
+    const {rows} = await pool.query(
+        `DELETE FROM stock WHERE id = $1`,
+        [id]
+    );
+    console.log(rows);
+    return rows;
+}
 module.exports = {
     getAllStock,
     getAllCategories,
     addNewStock,
     getSelectedStockId,
-    editSelectedStock
+    getSelectedStockCat,
+    editSelectedStock,
+    deleteSelectedStock
 }

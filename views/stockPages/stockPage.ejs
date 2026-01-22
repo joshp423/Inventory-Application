@@ -1,6 +1,6 @@
 <div class="itemTitlePrice">
     <h1> <%= item.title %> </h1>
-    <h2> $<%= item.price %> </h2>
+    <h2> Price: $<%= item.price %> </h2>
 </div>
 <div class="itemInfo">
     <h3> Category: <%= item.category %> </h3>
@@ -12,7 +12,7 @@
     <a href="/stockEditForm/<%= item.id %>">
         <button type="button">Edit Item</button>
     </a>
-    <a href=":stockid/delete">
+    <a href="/delete/<%= item.id %>">
         <button type="button">Delete Item</button>
     </a>
 </div>

@@ -6,7 +6,8 @@ indexRouter.get("/", indexController.allStockGet);
 indexRouter.get("/createStockForm", indexController.createStockGet);
 indexRouter.post("/createStockForm", indexController.createStockPost);
 indexRouter.get("/stockEditForm/:stockid", indexController.editStockGet);
-indexRouter.post("/stockEditForm/:stockid", indexController.editStockPost)
-
+indexRouter.post("/stockEditForm/:stockid", indexController.editStockPost);
+indexRouter.get("/delete/:stockid", indexController.deleteStockGet);
+indexRouter.post("/delete/:stockid", indexController.deleteStockPost);
 
 module.exports = indexRouter;

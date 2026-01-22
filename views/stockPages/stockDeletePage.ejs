@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Delete Stock</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <%- include('../partials/navbar.ejs', {links}) %>
+        <div class="deleteConfirmation">
+            <h1>Are you sure you want to delete <%= stock.title %> from the database?</h1>
+            <div>
+                <form method="POST" action="/delete/<%= stock.id %>">
+                    <button type="submit">Yes</button>
+                </form>
+                <a href="/">
+                    <button type="button">No</button>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

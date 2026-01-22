@@ -86,11 +86,26 @@ const editStockPost = [
   }
 ]
 
+async function deleteStockGet (req, res) {
+  const productid = req.params.stockid;
+  const stock = await db.getSelectedStockId(productid);
+  res.render("stockPages/stockDeletePage", {title: "Delete Stock Confirmation", links, stock:stock[0]});
+};
+
+async function deleteStockPost (req, res) {
+  const productid = req.params.stockid;
+  await db.deleteSelectedStock(productid);
+  res.redirect('/');
+}
+
+
 module.exports = {
   allStockGet,
   createStockGet,
   createStockPost,
   editStockGet,
-  editStockPost
+  editStockPost,
+  deleteStockGet,
+  deleteStockPost
 };
 
