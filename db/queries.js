@@ -56,7 +56,7 @@ async function editSelectedStock(productId, productTitle, productDesc, productPr
 }
 
 async function deleteSelectedStock(id) {
-    console.log(id)
+    console.log(id);
     const {rows} = await pool.query(
         `DELETE FROM stock WHERE id = $1`,
         [id]
@@ -64,6 +64,21 @@ async function deleteSelectedStock(id) {
     console.log(rows);
     return rows;
 }
+
+async function getSelectedCatCount(cat) {
+    console.log(cat);
+    const {rows} = await pool.query(
+        `SELECT COUNT(*)
+        FROM stock
+        JOIN categories
+        ON categories.category = stock.category
+        WHERE categories.category = $1;`,
+        [cat]
+    )
+    console.log(rows)
+    return rows;
+}
+
 module.exports = {
     getAllStock,
     getAllCategories,
@@ -71,5 +86,6 @@ module.exports = {
     getSelectedStockId,
     getSelectedStockCat,
     editSelectedStock,
-    deleteSelectedStock
+    deleteSelectedStock,
+    getSelectedCatCount
 }

@@ -1,15 +1,15 @@
 <html>
     <head>
-        <title>Edit Stock</title>
+        <title>Edit Category</title>
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
         <%- include('../partials/navbar.ejs', {links}) %>
-        <div class="stockForm">
+        <div class="categoryForm">
             <h1>Edit Stock Entry</h1>
             <%- include("../partials/errors") %>
-            <form method="POST" action="/stockEditForm/<%= stock.id %>" id="editStockForm">
-                <label for="productTitle">Product Title</label>
+            <form method="POST" action="/editCategory/<%= stock.id %>" id="categoryEditForm">
+                <label for="categoryTitle">Product Title</label>
                 <input type="text" name="productTitle" value= "<%= stock.title %>" >
                 <label for="productDesc">Product Description</label>
                 <textarea name="productDesc" id="productDesc"><%= stock.description %></textarea>

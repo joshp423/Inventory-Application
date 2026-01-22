@@ -98,11 +98,19 @@ async function deleteStockPost (req, res) {
   res.redirect('/');
 }
 
-async function viewCategoriesGet(req, res) {
+async function viewCategoriesGet (req, res) {
   const categories = await db.getAllCategories();
   res.render("categoryPages/categoryPage", {title: "View and edit stock", links, categories});
 }
 
+async function editCategoryGet (req, res) {
+  const category = req.params.categoryid;
+  res.render("stockPages/stockEditForm", {title: "Edit Category", links, category});
+}
+
+async function editCategoryPost (req, res) { 
+
+}
 
 module.exports = {
   allStockGet,
@@ -112,6 +120,7 @@ module.exports = {
   editStockPost,
   deleteStockGet,
   deleteStockPost,
-  viewCategoriesGet
+  viewCategoriesGet,
+  editCategoryGet
 };
 
