@@ -9,5 +9,6 @@ indexRouter.get("/stockEditForm/:stockid", indexController.editStockGet);
 indexRouter.post("/stockEditForm/:stockid", indexController.editStockPost);
 indexRouter.get("/delete/:stockid", indexController.deleteStockGet);
 indexRouter.post("/delete/:stockid", indexController.deleteStockPost);
+indexRouter.get("/viewCategories", indexController.viewCategoriesGet);
 
 module.exports = indexRouter;

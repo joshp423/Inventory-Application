@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>View and edit categories</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <%- include('../partials/navbar', {links}) %>
+        <div class="stockSectionTitle">
+            <h1>All Categories</h1>
+            <a href="/createCategories"><button type="button">Create New Categories</button></a>
+        </div>
+        
+        <div class="categorySection">
+            <% categories.forEach((category) => { %>
+                <%- include('../categoryPages/categoryTile', {category}); %>
+            <% }); %>
+        </div>
+    </body>
+</html>

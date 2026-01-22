@@ -1,0 +1,11 @@
+<div class="categoryTile">
+    <h1>Category: <%= category.category %></h1>
+    <div class="itemButtons">
+        <a href="/categoryEditForm/<%= category.id %>">
+            <button type="button">Edit Item</button>
+        </a>
+        <a href="/deleteCategory/<%= category.id %>">
+            <button type="button">Delete Item</button>
+        </a>
+    </div>
+</div>

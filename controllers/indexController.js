@@ -3,7 +3,7 @@ const db = require("../db/queries");
 
 const links = [
   { href: "/", text: "Stock View" },
-  { href: "/stockCategories", text: "Category View" },
+  { href: "/viewCategories", text: "Category View" },
 ];
 
 async function allStockGet (req, res) {
@@ -98,6 +98,11 @@ async function deleteStockPost (req, res) {
   res.redirect('/');
 }
 
+async function viewCategoriesGet(req, res) {
+  const categories = await db.getAllCategories();
+  res.render("categoryPages/categoryPage", {title: "View and edit stock", links, categories});
+}
+
 
 module.exports = {
   allStockGet,
@@ -106,6 +111,7 @@ module.exports = {
   editStockGet,
   editStockPost,
   deleteStockGet,
-  deleteStockPost
+  deleteStockPost,
+  viewCategoriesGet
 };
 

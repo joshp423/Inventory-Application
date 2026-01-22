@@ -16,9 +16,9 @@
 
                 <label for="productCategory">Product Category</label>
                 <select name="productCategory" id="productCategory" selected="<%= stock.category %>">
-                <% categories.forEach((category) => { %> 
-                    <%- include('../categoryPages/categoryOptions', {category}); %>
-                <% }); %> 
+                <% categories.forEach((category) => { %>
+                    <%- include('../categoryPages/categoryOptionsEdit', {category}); %>
+                <% }); %>
                 </select>
 
                 <label for="productPrice">Product Price</label>
@@ -29,6 +29,9 @@
                 <input type="text" name="productBrand" value= "<%= stock.brand %>">
                 <button type="submit">Update Stock</button>
             </form>
+            <a href="/">
+                <button type="button">Back</button>
+            </a>
         </div>
     </body>
 </html>
