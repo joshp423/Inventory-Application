@@ -109,7 +109,7 @@ async function editCategoryGet (req, res) {
 }
 
 async function editCategoryPost (req, res) { 
-
+  
 }
 
 module.exports = {
@@ -121,6 +121,7 @@ module.exports = {
   deleteStockGet,
   deleteStockPost,
   viewCategoriesGet,
-  editCategoryGet
+  editCategoryGet,
+  editCategoryPost
 };
 

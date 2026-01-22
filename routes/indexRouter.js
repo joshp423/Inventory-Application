@@ -11,5 +11,6 @@ indexRouter.get("/delete/:stockid", indexController.deleteStockGet);
 indexRouter.post("/delete/:stockid", indexController.deleteStockPost);
 indexRouter.get("/viewCategories", indexController.viewCategoriesGet);
 indexRouter.get("/editCategory/:categoryid", indexController.editCategoryGet);
+indexRouter.post("/editCategory/:categoryid", indexController.editCategoryPost)
 
 module.exports = indexRouter;

@@ -8,26 +8,13 @@
         <div class="categoryForm">
             <h1>Edit Stock Entry</h1>
             <%- include("../partials/errors") %>
-            <form method="POST" action="/editCategory/<%= stock.id %>" id="categoryEditForm">
-                <label for="categoryTitle">Product Title</label>
-                <input type="text" name="productTitle" value= "<%= stock.title %>" >
-                <label for="productDesc">Product Description</label>
-                <textarea name="productDesc" id="productDesc"><%= stock.description %></textarea>
-
-                <label for="productCategory">Product Category</label>
-                <select name="productCategory" id="productCategory" selected="<%= stock.category %>">
-                <% categories.forEach((category) => { %>
-                    <%- include('../categoryPages/categoryOptionsEdit', {category}); %>
-                <% }); %>
-                </select>
-
-                <label for="productPrice">Product Price</label>
-                <input type="number" name="productPrice" value= "<%= stock.price %>">
-                <label for="productQuantity">Product Quantity</label>
-                <input type="number" name="productQuantity" value= "<%= stock.quantity %>">
-                <label for="productBrand">Product Brand</label>
-                <input type="text" name="productBrand" value= "<%= stock.brand %>">
-                <button type="submit">Update Stock</button>
+            <form method="POST" action="/editCategory/<%= category.id %>" id="categoryEditForm">
+                <label for="categoryTitle"> Category Title - WARNING: This will rename this category for all products </label>
+                <input type="text" name="categoryTitle" value= "<%= category.category %>" >
+                <button type="submit">Edit Category</button>
+            </form>
+            <form action="POST" action="/deleteCategory/<%= category.id %>" id="categoryDeleteForm">
+                <button type="submit">Delete Category</button>
             </form>
             <a href="/">
                 <button type="button">Back</button>
