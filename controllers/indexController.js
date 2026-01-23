@@ -109,8 +109,16 @@ async function viewCategoriesGet (req, res) {
 }
 
 async function editCategoryGet (req, res) {
-  const category = req.params.categoryid;
-  res.render("stockPages/stockEditForm", {title: "Edit Category", links, category});
+  console.log(req.params)
+  if (!req.params.categoryid) {
+    return res.status(400).render("categoryPages/categoryEditForm", {
+        title: "Edit Category",
+        links,
+        errors: ["Category ID is required"],
+      })
+  }
+  const category = await db.getSelectedCatId(req.params.categoryid)
+  res.render("categoryPages/categoryEditForm", {title: "Edit Category", links, category});
 }
 
 const editCategoryPost = [
@@ -118,15 +126,16 @@ const editCategoryPost = [
   async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
-      return res.status(400).render("stockPages/stockEditForm", {
+      return res.status(400).render("categoryPages/categoryEditForm", {
         title: "Edit Category",
         links,
         errors: errors.array(),
       })
     }
-    const {categoryTitle} = matchedData(req);
-
-    await db.editCategory(categoryTitle);
+    const { categoryTitle } = matchedData(req);
+    
+    const category = await db.getSelectedCatId(req.params.categoryid)
+    await db.editCategory(categoryTitle, req.params.categoryid, category);
     res.redirect('/');
   }
 ]

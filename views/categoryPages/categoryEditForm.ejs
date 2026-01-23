@@ -6,14 +6,14 @@
     <body>
         <%- include('../partials/navbar.ejs', {links}) %>
         <div class="categoryForm">
-            <h1>Edit Stock Entry</h1>
+            <h1>Edit Category: <%= category.category %></h1>
             <%- include("../partials/errors") %>
             <form method="POST" action="/editCategory/<%= category.id %>" id="categoryEditForm">
                 <label for="categoryTitle"> Category Title - WARNING: This will rename this category for all products </label>
                 <input type="text" name="categoryTitle" value= "<%= category.category %>" >
-                <button type="submit">Edit Category</button>
+                <button type="submit">Confirm Category Edit</button>
             </form>
-            <form action="POST" action="/deleteCategory/<%= category.id %>" id="categoryDeleteForm">
+            <form method="POST" action="/deleteCategory/<%= category.id %>" id="categoryDeleteForm">
                 <button type="submit">Delete Category</button>
             </form>
             <a href="/">
