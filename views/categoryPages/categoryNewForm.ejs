@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Edit Category</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <%- include('../partials/navbar.ejs', {links}) %>
+        <div class="categoryForm">
+            <h1>New Category %></h1>
+            <%- include("../partials/errors") %>
+            <form method="POST" action="/newCategory" id="categoryNewForm">
+                <label for="categoryTitle"> Category Title </label>
+                <input type="text" name="categoryTitle" >
+                <button type="submit">Confirm New Category</button>
+            </form>
+            <a href="/viewCategories">
+                <button type="button">Back</button>
+            </a>
+        </div>
+    </body>
+</html>

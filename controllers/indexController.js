@@ -140,6 +140,28 @@ const editCategoryPost = [
   }
 ]
 
+async function newCategoryGet (req, res) {
+  res.render("categoryPages/categoryNewForm", {title: "New Category Entry", links});
+}
+
+const newCategoryPost = [
+  ...validateCategory,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+      return res.status(400).render("categoryPages/categoryNewForm", {
+        title: "New Category",
+        links,
+        errors: errors.array(),
+      })
+    }
+    const { categoryTitle } = matchedData(req);
+    
+    await db.addNewCategory(categoryTitle);
+    res.redirect('/');
+  }
+]
+
 module.exports = {
   allStockGet,
   createStockGet,
@@ -150,6 +172,8 @@ module.exports = {
   deleteStockPost,
   viewCategoriesGet,
   editCategoryGet,
-  editCategoryPost
+  editCategoryPost,
+  newCategoryGet,
+  newCategoryPost
 };
 
