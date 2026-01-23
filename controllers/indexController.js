@@ -38,6 +38,11 @@ const validateProduct = [
     .isLength({min:1, max: 25}).withMessage(`Product brand ${lengthErrBrand}`)
 ]
 
+const validateCategory = [
+  body("categoryTitle").trim().escape()
+    .isLength({min: 1, max: 50}).withMessage("Category must be between 1 and 50 characters.")
+]
+
 const createStockPost = [
   ...validateProduct,
   async (req, res) => {
@@ -108,9 +113,23 @@ async function editCategoryGet (req, res) {
   res.render("stockPages/stockEditForm", {title: "Edit Category", links, category});
 }
 
-async function editCategoryPost (req, res) { 
-  
-}
+const editCategoryPost = [
+  ...validateCategory,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+      return res.status(400).render("stockPages/stockEditForm", {
+        title: "Edit Category",
+        links,
+        errors: errors.array(),
+      })
+    }
+    const {categoryTitle} = matchedData(req);
+
+    await db.editCategory(categoryTitle);
+    res.redirect('/');
+  }
+]
 
 module.exports = {
   allStockGet,

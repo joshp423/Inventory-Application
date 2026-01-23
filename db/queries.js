@@ -79,6 +79,11 @@ async function getSelectedCatCount(cat) {
     return rows;
 }
 
+async function editCategoryPost(categoryid) {
+    console.log(categoryid);
+    
+}
+
 module.exports = {
     getAllStock,
     getAllCategories,
