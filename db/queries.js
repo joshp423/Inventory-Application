@@ -58,13 +58,11 @@ async function editSelectedStock(productId, productTitle, productDesc, productPr
 
 async function deleteSelectedStock(id) {
     console.log(id);
-    const {rows} = await pool.query(
+    await pool.query(
         `DELETE FROM stock WHERE id = $1;`,
         [id]
-        ``
     );
-    console.log(rows);
-    return rows;
+    return;
 }
 
 async function getCatCounts() {
@@ -108,14 +106,18 @@ async function getSelectedCatId(id){
     return rows[0];
 }
 
-async function deleteSelectedCategory(id) {
-    console.log(id);
-    const {rows} = await pool.query(
+async function deleteSelectedCategory(id, catName) {
+    await pool.query(
         `DELETE FROM categories WHERE id = $1;`,
         [id]
     );
-    console.log(rows);
-    return rows;
+    await pool.query(
+        `UPDATE stock
+        SET category = ''
+        WHERE category = $1`,
+        [catName]
+    )
+    return;
 }
 
 async function addNewCategory(title) {

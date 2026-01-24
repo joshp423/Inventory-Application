@@ -119,7 +119,8 @@ async function deleteCategoryGet (req, res) {
 
 async function deleteCategoryPost (req, res) {
   const categoryId = req.params.categoryid;
-  await db.deleteSelectedCategory(categoryId);
+  const categoryName = await db.getSelectedCatId(categoryId)
+  await db.deleteSelectedCategory(categoryId, categoryName.category);
   res.redirect('/');
 }
 
