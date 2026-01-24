@@ -6,13 +6,17 @@
     <body>
         <%- include('partials/navbar', {links}) %>
         <div class="filterForm">
-            <form method="GET" action="/categoryFilter/<%= category.category %>">
-                <select name="productCategory" id="productCategory" >
+            <form method="GET" action="/categoryFilter/" >
+                <select name="productCategory" id="productCategory" onchange="this.form.submit()">
+                    <option value="" selected disabled hidden>Filter by Category</option>
                 <% categories.forEach((category) => { %>
-                    <%- include('../categoryPages/categoryOptionsNew', {category}); %>
+                    <%- include('categoryPages/categoryOptionsNew', {category}); %>
                 <% }); %>
                 </select>
             </form>
+            <a href="/">
+                <button type="button">Reset Filter</button>
+            </a>
         </div>
         <div class="stockSectionTitle">
             <h1>All Stock</h1>

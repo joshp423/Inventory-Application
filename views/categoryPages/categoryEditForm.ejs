@@ -13,7 +13,7 @@
                 <input type="text" name="categoryTitle" value= "<%= category.category %>" >
                 <button type="submit">Confirm Category Edit</button>
             </form>
-            <form method="POST" action="/deleteCategory/<%= category.id %>" id="categoryDeleteForm">
+            <form method="GET" action="/deleteCategory/<%= category.id %>" id="categoryDeleteForm">
                 <button type="submit">Delete Category</button>
             </form>
             <a href="/viewCategories">

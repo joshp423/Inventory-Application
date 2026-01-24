@@ -8,7 +8,6 @@ async function getAllStock() {
 
 async function getAllCategories() {
     const {rows} = await pool.query("SELECT * FROM categories;");
-    console.log(rows);
     return rows;
 }
 
@@ -33,7 +32,6 @@ async function getSelectedStockId(id) {
 }
 
 async function getSelectedStockCat(cat) {
-    console.log(cat)
     const {rows} = await pool.query(
         `SELECT *
         FROM stock
@@ -42,7 +40,6 @@ async function getSelectedStockCat(cat) {
         WHERE categories.category = $1;`,
         [cat]
     );
-    console.log(rows);
     return rows;
 }
 
@@ -64,6 +61,7 @@ async function deleteSelectedStock(id) {
     const {rows} = await pool.query(
         `DELETE FROM stock WHERE id = $1;`,
         [id]
+        ``
     );
     console.log(rows);
     return rows;
@@ -71,9 +69,12 @@ async function deleteSelectedStock(id) {
 
 async function getCatCounts() {
     const {rows} = await pool.query(
-        `SELECT category_id, COUNT(*) AS count
-        FROM items
-        GROUP BY category_id;`
+        `SELECT categories.category,
+        COUNT(stock.id) AS count
+        FROM categories
+        LEFT JOIN stock
+        ON stock.category = categories.category
+        GROUP BY categories.category;`
     )
     console.log(rows)
     return rows;
@@ -82,27 +83,28 @@ async function getCatCounts() {
 async function editCategory(newTitle, categoryid, oldTitle) {
     console.log(newTitle, categoryid, oldTitle)
     await pool.query(
+        `UPDATE stock
+        SET category = $1
+        WHERE category = $2;`,
+        [newTitle, oldTitle.category]
+    )
+    await pool.query(
         `UPDATE categories
         SET category = $1
         WHERE id = $2;`,
         [newTitle, categoryid]
     )
-    await pool.query(
-        `UPDATE stock
-        SET category = $1
-        WHERE category = $2;`,
-        [newTitle, oldTitle]
-    )
+    
     return;
 }
 
 async function getSelectedCatId(id){
-    console.log(id);
     const { rows } = await pool.query(
         `SELECT * FROM categories
         WHERE id = $1;`,
         [id]
     )
+    console.log(rows);
     return rows[0];
 }
 

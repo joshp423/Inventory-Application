@@ -12,9 +12,11 @@ indexRouter.post("/delete/:stockid", indexController.deleteStockPost);
 indexRouter.get("/viewCategories", indexController.viewCategoriesGet);
 indexRouter.get("/editCategory/:categoryid", indexController.editCategoryGet);
 indexRouter.post("/editCategory/:categoryid", indexController.editCategoryPost);
+indexRouter.get("/deleteCategory/:categoryid", indexController.deleteCategoryGet);
+indexRouter.post("/deleteCategory/:categoryid", indexController.deleteCategoryPost);
 indexRouter.get("/newCategory", indexController.newCategoryGet);
 indexRouter.post("/newCategory", indexController.newCategoryPost);
-indexRouter.get("/categoryFilter/:productCategory", indexController.filterStockGet);
+indexRouter.get("/categoryFilter", indexController.filterStockGet);
 
 
 module.exports = indexRouter;

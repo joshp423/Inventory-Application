@@ -13,7 +13,9 @@ async function allStockGet (req, res) {
 }
 
 async function filterStockGet(req, res) {
-  const stock = await db.getSelectedStockCat(req.params.productCategory);
+  console.log(req.query)
+  const stock = await db.getSelectedStockCat(req.query.productCategory);
+  const categories = await db.getAllCategories();
   res.render("index", {title: "Musical Instrument Inventory Application", stock, links, categories});
 }
 
@@ -101,11 +103,23 @@ async function deleteStockGet (req, res) {
   const productid = req.params.stockid;
   const stock = await db.getSelectedStockId(productid);
   res.render("stockPages/stockDeletePage", {title: "Delete Stock Confirmation", links, stock:stock[0]});
-};
+}
 
 async function deleteStockPost (req, res) {
   const productid = req.params.stockid;
   await db.deleteSelectedStock(productid);
+  res.redirect('/');
+}
+
+async function deleteCategoryGet (req, res) {
+  const categoryId = req.params.categoryid;
+  const category = await db.getSelectedCatId(categoryId);
+  res.render("categoryPages/categoryDeletePage", {title: "Delete Stock Confirmation", links, category:category});
+}
+
+async function deleteCategoryPost (req, res) {
+  const categoryId = req.params.categoryid;
+  await db.deleteSelectedCategory(categoryId);
   res.redirect('/');
 }
 
@@ -114,9 +128,12 @@ async function viewCategoriesGet (req, res) {
   const counts = await db.getCatCounts();
   const countMap = {};
   counts.forEach(c => { //group by category and use id as key for value lookup from object - converts array to lookup object
-    countMap[c.category_id] = c.count;
+    countMap[c.category] = c.count;
   });
-  res.render("categoryPages/categoryPage", {title: "View and edit stock", links, count: countMap[category.id] || 0});
+  categories.forEach(category => { //then attach to each category
+    category.count = countMap[category.category] || 0;
+  });
+  res.render("categoryPages/categoryPage", {title: "View and edit Categories", links, categories});
 }
 
 async function editCategoryGet (req, res) {
@@ -186,6 +203,8 @@ module.exports = {
   editCategoryPost,
   newCategoryGet,
   newCategoryPost,
-  filterStockGet
+  filterStockGet,
+  deleteCategoryGet,
+  deleteCategoryPost
 };
 
