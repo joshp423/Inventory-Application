@@ -8,7 +8,13 @@ const links = [
 
 async function allStockGet (req, res) {
   const stock = await db.getAllStock();
-  res.render("index", {title: "Musical Instrument Inventory Application", stock, links})
+  const categories = await db.getAllCategories();
+  res.render("index", {title: "Musical Instrument Inventory Application", stock, links, categories});
+}
+
+async function filterStockGet(req, res) {
+  const stock = await db.getSelectedStockCat(req.params.productCategory);
+  res.render("index", {title: "Musical Instrument Inventory Application", stock, links, categories});
 }
 
 async function createStockGet (req, res) {
@@ -179,6 +185,7 @@ module.exports = {
   editCategoryGet,
   editCategoryPost,
   newCategoryGet,
-  newCategoryPost
+  newCategoryPost,
+  filterStockGet
 };
 

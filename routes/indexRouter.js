@@ -14,6 +14,7 @@ indexRouter.get("/editCategory/:categoryid", indexController.editCategoryGet);
 indexRouter.post("/editCategory/:categoryid", indexController.editCategoryPost);
 indexRouter.get("/newCategory", indexController.newCategoryGet);
 indexRouter.post("/newCategory", indexController.newCategoryPost);
+indexRouter.get("/categoryFilter/:productCategory", indexController.filterStockGet);
 
 
 module.exports = indexRouter;

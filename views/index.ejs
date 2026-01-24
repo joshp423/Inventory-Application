@@ -5,6 +5,15 @@
     </head>
     <body>
         <%- include('partials/navbar', {links}) %>
+        <div class="filterForm">
+            <form method="GET" action="/categoryFilter/<%= category.category %>">
+                <select name="productCategory" id="productCategory" >
+                <% categories.forEach((category) => { %>
+                    <%- include('../categoryPages/categoryOptionsNew', {category}); %>
+                <% }); %>
+                </select>
+            </form>
+        </div>
         <div class="stockSectionTitle">
             <h1>All Stock</h1>
             <a href="/createStockForm"><button type="button">Create New Stock Item</button></a>
