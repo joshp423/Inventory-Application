@@ -105,7 +105,12 @@ async function deleteStockPost (req, res) {
 
 async function viewCategoriesGet (req, res) {
   const categories = await db.getAllCategories();
-  res.render("categoryPages/categoryPage", {title: "View and edit stock", links, categories});
+  const counts = await db.getCatCounts();
+  const countMap = {};
+  counts.forEach(c => { //group by category and use id as key for value lookup from object - converts array to lookup object
+    countMap[c.category_id] = c.count;
+  });
+  res.render("categoryPages/categoryPage", {title: "View and edit stock", links, count: countMap[category.id] || 0});
 }
 
 async function editCategoryGet (req, res) {

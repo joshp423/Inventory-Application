@@ -32,12 +32,16 @@ async function getSelectedStockId(id) {
     return rows;
 }
 
-async function getSelectedStockCat(cat) { //fix on search
-    console.log(id)
-        const {rows} = await pool.query(
-            `SELECT * FROM stock WHERE id = $1;`,
-            [id]
-        );
+async function getSelectedStockCat(cat) {
+    console.log(cat)
+    const {rows} = await pool.query(
+        `SELECT *
+        FROM stock
+        JOIN categories
+        ON categories.category = stock.category
+        WHERE categories.category = $1;`,
+        [cat]
+    );
     console.log(rows);
     return rows;
 }
@@ -65,15 +69,11 @@ async function deleteSelectedStock(id) {
     return rows;
 }
 
-async function getSelectedCatCount(cat) {
-    console.log(cat);
+async function getCatCounts() {
     const {rows} = await pool.query(
-        `SELECT COUNT(*)
-        FROM stock
-        JOIN categories
-        ON categories.category = stock.category
-        WHERE categories.category = $1;`,
-        [cat]
+        `SELECT category_id, COUNT(*) AS count
+        FROM items
+        GROUP BY category_id;`
     )
     console.log(rows)
     return rows;
@@ -134,7 +134,7 @@ module.exports = {
     getSelectedStockCat,
     editSelectedStock,
     deleteSelectedStock,
-    getSelectedCatCount,
+    getCatCounts,
     editCategory,
     getSelectedCatId,
     deleteSelectedCategory,
