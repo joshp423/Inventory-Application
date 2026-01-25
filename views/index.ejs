@@ -2,31 +2,38 @@
     <head>
         <title>Musical Instrument Inventory Application</title>
         <link rel="stylesheet" href="/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=VT323&display=swap" rel="stylesheet">
     </head>
     <body>
         <%- include('partials/navbar', {links}) %>
         <div class="filterForm">
-            <form method="GET" action="/categoryFilter/" >
-                <select name="productCategory" id="productCategory" onchange="this.form.submit()">
-                    <option value="" selected disabled hidden>Filter by Category</option>
-                <% categories.forEach((category) => { %>
-                    <%- include('categoryPages/categoryOptionsNew', {category}); %>
-                <% }); %>
-                </select>
-            </form>
+            <div>
+                <form method="GET" action="/categoryFilter/" >
+                    <select name="productCategory" id="productCategory" onchange="this.form.submit()">
+                        <option value="" selected disabled hidden>Filter by Category</option>
+                    <% categories.forEach((category) => { %>
+                        <%- include('categoryPages/categoryOptionsNew', {category}); %>
+                    <% }); %>
+                    </select>
+                </form>
+            </div>
             <a href="/">
                 <button type="button">Reset Filter</button>
             </a>
         </div>
-        <div class="stockSectionTitle">
-            <h1>All Stock</h1>
-            <a href="/createStockForm"><button type="button">Create New Stock Item</button></a>
-        </div>
-        
         <div class="stockSection">
-            <% stock.forEach((item) => { %> 
-                <%- include('stockPages/stockPage', {item}); %>
-            <% }); %> 
+            <div class="stockSectionTitle">
+                <h1>All Stock</h1>
+                <a href="/createStockForm"><button type="button">Create New Stock Item</button></a>
+            </div>
+            
+            <div class="stockItems">
+                <% stock.forEach((item) => { %> 
+                    <%- include('stockPages/stockPage', {item}); %>
+                <% }); %> 
+            </div>
         </div>
     </body>
 </html>

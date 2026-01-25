@@ -1,0 +1,67 @@
+@font-face {
+    font-family: "VT323", monospace;
+    src: url("../fonts/VT323-Regular.ttf") format ("ttf");
+    font-weight: 300;
+    font-style: normal;
+}
+    
+body {
+    font-family: "VT323", monospace;
+    margin: 0px;
+    background-color: #C2C5C9;
+    padding: 5px;
+}
+
+nav {
+    display: flex;
+    background-color: #0000A9;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+}
+
+nav>ul {
+    display: flex;
+}
+
+nav>ul>li>a {
+    background-color: #C2C5C9;
+}
+h1 {
+    margin: 0px;
+}
+ul {
+    list-style-type:none;
+}
+
+a {
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    color: white;
+}
+
+select {
+    font-family: "VT323", monospace;
+    background-color: #C2C5C9;
+}
+
+button {
+    font-family: "VT323", monospace;
+    background-color: #C2C5C9;
+}
+
+.filterForm {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+}
+
+.filterForm>div>form {
+    margin: 0px;
+}
+
+.stockSection {
+    background-color: white;
+}
