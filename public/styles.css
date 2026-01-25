@@ -19,24 +19,38 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0px 10px 0px 10px;
+    height: 30px;
+
 }
 
+nav>h1 {
+    font-size: 20px;
+    font-weight: 400;
+}
 nav>ul {
     display: flex;
+    gap: 10px;
+    margin: 0px;
 }
 
 nav>ul>li>a {
     background-color: #C2C5C9;
+    color: black;
+    border: 1px solid black;
+    border-top:  2px solid white;
+    border-left: 2px solid white;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
 }
 h1 {
     margin: 0px;
+    font-weight: 300;
 }
 ul {
     list-style-type:none;
 }
 
-a {
-    padding: 5px 10px 5px 10px;
+a { 
     text-decoration: none;
     color: white;
 }
@@ -44,11 +58,17 @@ a {
 select {
     font-family: "VT323", monospace;
     background-color: #C2C5C9;
+    border: none;
 }
 
 button {
     font-family: "VT323", monospace;
     background-color: #C2C5C9;
+    border-top:  2px solid white;
+    border-left: 2px solid white;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    font-size: 18px;
 }
 
 .filterForm {
@@ -56,12 +76,59 @@ button {
     justify-items: center;
     align-items: center;
     padding: 0px 10px 0px 10px;
+    gap: 15px;
+    height: 30px;
 }
 
 .filterForm>div>form {
     margin: 0px;
 }
 
+.filterForm>a {
+    padding: 5px 0px 5px 0px;
+}
+
+.filterForm>div>form>select {
+    font-size: 18px;
+    border-top:  2px solid white;
+    border-left: 2px solid white;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.filterForm>a>button {
+    font-size: 18px;
+}
+
 .stockSection {
+    height: 93%;
     background-color: white;
+    padding: 5px 10px 5px 10px;
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stockSectionTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.stockSectionTitle>h1 {
+    font-size: 40px;
+    border-bottom: 2px dotted black;
+}
+
+.stockItems {
+    display: grid;
+    grid-template: auto / 1fr 1fr;
+    gap: 10px;
+}
+
+.stockItem {
+
 }
