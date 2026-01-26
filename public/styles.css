@@ -87,8 +87,7 @@ button {
 }
 
 button:hover {
-    outline: 1px dashed black;
-    outline-style: inset;
+    outline: 1px inset black;
 }
 
 .filterForm {
@@ -171,6 +170,7 @@ button:hover {
 }
 
 .formHeader {
+    display: flex;
     justify-items: center;
     align-items: center;
     padding: 0px 10px 0px 10px;
@@ -191,6 +191,7 @@ button:hover {
     border-top: 3px solid black;
     border-left: 3px solid black;
     font-family: "VT323", monospace;
+    padding-top: 10px;
 }
 
 .stockForm>h1 {
@@ -203,5 +204,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     width: 80%;
+    gap: 5px;
+
 }
 
