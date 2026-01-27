@@ -2,9 +2,13 @@
     <head>
         <title>Edit Category</title>
         <link rel="stylesheet" href="/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=VT323&display=swap" rel="stylesheet">
     </head>
     <body>
         <%- include('../partials/navbar.ejs', {links}) %>
+        <%- include("../partials/backNavbarStock.ejs") %>
         <div class="categoryForm">
             <h1>Edit Category: <%= category.category %></h1>
             <%- include("../partials/errors") %>
@@ -16,9 +20,6 @@
             <form method="GET" action="/deleteCategory/<%= category.id %>" id="categoryDeleteForm">
                 <button type="submit">Delete Category</button>
             </form>
-            <a href="/viewCategories">
-                <button type="button">Back</button>
-            </a>
         </div>
     </body>
 </html>
