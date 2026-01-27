@@ -154,7 +154,6 @@ button:hover {
     gap: 10px;
     border: 2px solid black;
     padding: 0px 0px 5px 5px;
-
 }
 
 .itemTitlePrice {
@@ -201,7 +200,7 @@ button:hover {
 .stockForm>form {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 70%;
     gap: 5px;
 
 }
@@ -230,6 +229,7 @@ button:hover {
     border-top: 3px solid black;
     border-left: 3px solid black;
     padding-top: 10px;
+    gap: 10px;
 }
 
 .categoriesSectionTitle {
@@ -242,4 +242,42 @@ button:hover {
 .categoriesSectionTitle>h1 {
     font-size: 40px;
     border-bottom: 2px dotted black;
+}
+
+.categorySection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.categoryTile {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 2px solid black;
+    padding: 0px 0px 5px 5px;
+}
+
+.categoryForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 93%;
+    background-color: white;
+    padding: 5px 10px 5px 10px;
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    padding-top: 10px;
+}
+.categoryForm>h1 {
+    text-align: center;
+    border-bottom: 2px dotted black;
+}
+
+.categoryForm>form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 5px;
+
 }
