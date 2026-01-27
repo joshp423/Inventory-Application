@@ -2,18 +2,25 @@
     <head>
         <title>View and edit categories</title>
         <link rel="stylesheet" href="/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=VT323&display=swap" rel="stylesheet">
+    </head>
+    <body>
     </head>
     <body>
         <%- include('../partials/navbar', {links}) %>
-        <div class="stockSectionTitle">
-            <h1>All Categories</h1>
-            <a href="/newCategory"><button type="button">Create New Category</button></a>
-        </div>
-        
-        <div class="categorySection">
-            <% categories.forEach((category) => { %>
-                <%- include('../categoryPages/categoryTile', {category}); %>
-            <% }); %>
+        <div class="categoriesSection">
+            <div class="categoriesSectionTitle">
+                <h1>All Categories</h1>
+                <a href="/newCategory"><button type="button">Create New Category</button></a>
+            </div>
+            
+            <div class="categorySection">
+                <% categories.forEach((category) => { %>
+                    <%- include('../categoryPages/categoryTile', {category}); %>
+                <% }); %>
+            </div>
         </div>
     </body>
 </html>

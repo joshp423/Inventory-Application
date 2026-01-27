@@ -8,9 +8,7 @@
     </head>
     <body>
         <%- include('../partials/navbar.ejs', {links}) %>
-        <div class="formHeader">
-            <a href="/"><button type="button">Back</button></a>
-        </div>
+        <%- include("../partials/backNavbar.ejs") %>
         <div class="stockForm">
             <h1>Create Stock Entry</h1>
             <%- include("../partials/errors.ejs") %>
