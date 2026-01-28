@@ -1,300 +1,301 @@
 @font-face {
-    font-family: "VT323", monospace;
-    src: url("../fonts/VT323-Regular.ttf") format ("ttf");
-    font-weight: 300;
-    font-style: normal;
+  font-family: "VT323", monospace;
+  src: url("../fonts/VT323-Regular.ttf") format ("ttf");
+  font-weight: 300;
+  font-style: normal;
 }
-    
+
 body {
-    font-family: "VT323", monospace;
-    margin: 0px;
-    background-color: #C2C5C9;
-    padding: 5px;
-    border-top:  2px solid white;
-    border-left: 2px solid white;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
+  font-family: "VT323", monospace;
+  margin: 0px;
+  background-color: #c2c5c9;
+  padding: 5px;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
 }
 
 nav {
-    display: flex;
-    background-color: #0000A9;
-    color: white;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 10px 0px 10px;
-    height: 30px;
-
+  display: flex;
+  background-color: #0000a9;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  height: 30px;
 }
 
-nav>h1 {
-    font-size: 20px;
-    font-weight: 400;
+nav > h1 {
+  font-size: 20px;
+  font-weight: 400;
 }
-nav>ul {
-    display: flex;
-    gap: 10px;
-    margin: 0px;
-}
-
-nav>ul>li>a {
-    background-color: #C2C5C9;
-    color: black;
-    border: 1px solid black;
-    border-top:  2px solid white;
-    border-left: 2px solid white;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    padding: 2px 5px 2px 5px;
+nav > ul {
+  display: flex;
+  gap: 10px;
+  margin: 0px;
 }
 
-nav>ul>li>span:hover {
-    outline: 1px dashed black;
-    outline-style: inset;
+nav > ul > li > a {
+  background-color: #c2c5c9;
+  color: black;
+  border: 1px solid black;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  padding: 2px 5px 2px 5px;
 }
-h1, h2, h3, p {
-    margin: 0px;
-    font-weight: 300;
+
+nav > ul > li > span:hover {
+  outline: 1px dashed black;
+  outline-style: inset;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0px;
+  font-weight: 300;
 }
 ul {
-    list-style-type:none;
+  list-style-type: none;
 }
 
-a { 
-    text-decoration: none;
-    color: white;
+a {
+  text-decoration: none;
+  color: white;
 }
 
 select {
-    font-family: "VT323", monospace;
-    background-color: #C2C5C9;
-    border: none;
+  font-family: "VT323", monospace;
+  background-color: #c2c5c9;
+  border: none;
 }
 
-select:hover{
-    background-color: #0000A9;
-    color: white
+select:hover {
+  background-color: #0000a9;
+  color: white;
 }
 
 button {
-    font-family: "VT323", monospace;
-    background-color: #C2C5C9;
-    border-top:  2px solid white;
-    border-left: 2px solid white;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    font-size: 18px;
+  font-family: "VT323", monospace;
+  background-color: #c2c5c9;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  font-size: 18px;
 }
 
 button:hover {
-    outline: 1px inset black;
+  outline: 1px inset black;
 }
 
 .filterForm {
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    padding: 0px 10px 0px 10px;
-    gap: 15px;
-    height: 30px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  gap: 15px;
+  height: 30px;
 }
 
-.filterForm>div>form {
-    margin: 0px;
+.filterForm > div > form {
+  margin: 0px;
 }
 
-.filterForm>a {
-    padding: 5px 0px 5px 0px;
+.filterForm > a {
+  padding: 5px 0px 5px 0px;
 }
 
-.filterForm>div>form>select {
-    font-size: 18px;
-    border-top:  2px solid white;
-    border-left: 2px solid white;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
+.filterForm > div > form > select {
+  font-size: 18px;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
 }
 
-.filterForm>a>button {
-    font-size: 18px;
+.filterForm > a > button {
+  font-size: 18px;
 }
 
 .stockSection {
-    height: auto;
-    background-color: white;
-    padding: 5px 10px 5px 10px;
-    border-top: 3px solid black;
-    border-left: 3px solid black;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  height: auto;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .stockSectionTitle {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
 }
 
-.stockSectionTitle>h1 {
-    font-size: 40px;
-    border-bottom: 2px dotted black;
+.stockSectionTitle > h1 {
+  font-size: 40px;
+  border-bottom: 2px dotted black;
 }
 
 .stockItems {
-    display: grid;
-    grid-template: auto / 1fr 1fr;
-    gap: 10px;
+  display: grid;
+  grid-template: auto / 1fr 1fr;
+  gap: 10px;
 }
 
 .stockItem {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: 2px solid black;
-    padding: 0px 0px 5px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid black;
+  padding: 0px 0px 5px 5px;
 }
 
 .itemTitlePrice {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .itemInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .formHeader {
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    padding: 0px 10px 0px 10px;
-    gap: 15px;
-    height: 30px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  gap: 15px;
+  height: 30px;
 }
-.formHeader>a>button{
-    font-size: 18px; 
+.formHeader > a > button {
+  font-size: 18px;
 }
 
 .stockForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 93%;
-    background-color: white;
-    padding: 5px 10px 5px 10px;
-    border-top: 3px solid black;
-    border-left: 3px solid black;
-    padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 93%;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  padding-top: 10px;
 }
 
-.stockForm>h1 {
-    text-align: center;
-    border-bottom: 2px dotted black;
+.stockForm > h1 {
+  text-align: center;
+  border-bottom: 2px dotted black;
 }
 
-.stockForm>form {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    gap: 5px;
-
+.stockForm > form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  gap: 5px;
 }
 
 .deleteConfirmation {
-    height: 93%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin: 50px 150px 0px 150px;
-    gap: 15px;
+  height: 93%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 50px 150px 0px 150px;
+  gap: 15px;
 }
 
-.deleteConfirmation>div {
-   display: flex;
-   justify-content: center;
-   gap: 20px
+.deleteConfirmation > div {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .categoriesSection {
-    display: flex;
-    flex-direction: column;
-    height: 93%;
-    background-color: white;
-    padding: 5px 10px 5px 10px;
-    border-top: 3px solid black;
-    border-left: 3px solid black;
-    padding-top: 10px;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 93%;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  padding-top: 10px;
+  gap: 10px;
 }
 
 .categoriesSectionTitle {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
 }
 
-.categoriesSectionTitle>h1 {
-    font-size: 40px;
-    border-bottom: 2px dotted black;
+.categoriesSectionTitle > h1 {
+  font-size: 40px;
+  border-bottom: 2px dotted black;
 }
 
 .categorySection {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .categoryTile {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    border: 2px solid black;
-    padding: 0px 0px 5px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 2px solid black;
+  padding: 0px 0px 5px 5px;
 }
 
 .categoryForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 93%;
-    background-color: white;
-    padding: 5px 10px 5px 10px;
-    border-top: 3px solid black;
-    border-left: 3px solid black;
-    padding-top: 10px;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 93%;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  padding-top: 10px;
+  gap: 10px;
 }
-.categoryForm>h1 {
-    text-align: center;
-    border-bottom: 2px dotted black;
+.categoryForm > h1 {
+  text-align: center;
+  border-bottom: 2px dotted black;
 }
 
-.categoryForm>form {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    gap: 5px;
-    margin: 0px;
+.categoryForm > form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  gap: 5px;
+  margin: 0px;
 }
 
 .editCatForm {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 93%;
-    background-color: white;
-    padding: 5px 10px 5px 10px;
-    border-top: 3px solid black;
-    border-left: 3px solid black;
-    padding-top: 10px;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 93%;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  padding-top: 10px;
+  gap: 10px;
 }

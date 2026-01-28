@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node db/populatedb.js"
+    "start": "node db/populatedb.js",
+    "prettier": "npx prettier . --write"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
     "express": "^5.2.1",
     "express-validator": "^7.3.1",
     "pg": "^8.17.2"
+  },
+  "devDependencies": {
+    "prettier": "3.8.1"
   }
 }

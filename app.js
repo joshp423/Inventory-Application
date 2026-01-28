@@ -10,11 +10,11 @@ app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use( "/", indexRouter );
-app.use(express.static('public'));
+app.use("/", indexRouter);
+app.use(express.static("public"));
 
-require('dotenv').config();
-const { Pool } = require('pg');
+require("dotenv").config();
+const { Pool } = require("pg");
 const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 const pool = new Pool({
   host: PGHOST,
@@ -29,7 +29,7 @@ const pool = new Pool({
 async function getPgVersion() {
   const client = await pool.connect();
   try {
-    const result = await client.query('SELECT version()');
+    const result = await client.query("SELECT version()");
     console.log(result.rows[0]);
   } finally {
     client.release();
@@ -39,8 +39,8 @@ getPgVersion();
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (error) => {
-    if (error) {
+  if (error) {
     throw error;
-    }
-    console.log(`Inventory Application - listening on port ${PORT}!`);
+  }
+  console.log(`Inventory Application - listening on port ${PORT}!`);
 });
