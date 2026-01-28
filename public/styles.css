@@ -120,7 +120,7 @@ button:hover {
 }
 
 .stockSection {
-    height: 93%;
+    height: auto;
     background-color: white;
     padding: 5px 10px 5px 10px;
     border-top: 3px solid black;
